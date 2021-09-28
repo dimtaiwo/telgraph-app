@@ -1,18 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const server = express();
-const mongoose = require("mongoose");
-const postRouter = require("./controllers/postController");
-require("dotenv").config();
+const dbConnect = require("./db/init");
 
-mongoose
-  .connect(process.env.CONNECTION_STRING)
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.error("cannot connect to db", err);
-  });
+const postRouter = require("./controllers/postController");
+
+dbConnect();
+
+server.set("view engine", "ejs");
+server.use(express.static(__dirname + "/public"));
 
 server.use(cors());
 server.use(express.json());
@@ -20,7 +16,7 @@ server.use(express.json());
 server.use("/post", postRouter);
 
 server.get("/", (req, res) => {
-  res.send("Hello Vellin");
+  res.render("index");
 });
 
 module.exports = server;
