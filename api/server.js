@@ -5,18 +5,23 @@ const dbConnect = require("./db/init");
 
 const postRouter = require("./controllers/postController");
 
-dbConnect();
-
+// register view engine
 server.set("view engine", "ejs");
-server.use(express.static(__dirname + "/public"));
 
+dbConnect();
 server.use(cors());
 server.use(express.json());
 
 server.use("/post", postRouter);
 
+server.use(express.static("public"));
+
 server.get("/", (req, res) => {
-  res.render("index");
+  res.send("Hello Velin");
+});
+
+server.use("/post", (req, res) => {
+  res.status(300).render("404");
 });
 
 module.exports = server;
