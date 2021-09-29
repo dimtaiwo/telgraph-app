@@ -50,4 +50,41 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+// Get EDITED BY POST ID
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    try {
+      console.log(post.Date);
+      let dateStr = dayjs(post.Date, 'YYYY-MM-DD');
+      res.render('index', { title: post.title, name: post.name, story: post.story, date: dateStr });
+    } catch (error) {
+      console.log(error);
+    }
+
+  } catch {
+    res.status(404).json({ error });
+  }
+})
+
+// UPDATE POST EDITS with a PUT request
+router.put('/:id/edit', async (req, res) => {
+  try {
+    const filter = { _id: req.params.id };
+    const update = {
+      title: req.body.title,
+      name: req.body.name,
+      story: req.body.story
+    }
+    const post = await Post.findOneAndUpdate(filter, update, {
+      new: true
+    });
+
+    res.render('post', { title: post.title, name: post.name, story: post.story });
+  } catch (error) {
+    console.log(error);
+  }
+
+})
+
 module.exports = router;

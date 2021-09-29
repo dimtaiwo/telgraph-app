@@ -85,13 +85,13 @@
     <section class="created-post">
         <div id="tel-post" class="telegraph-post">
             <div class="post-wrapper">
-                <h1>
+                <h1 id="title">
                     <%= title %>
                 </h1>
-                <h3>
+                <h3 id="name">
                     <%= name %>
                 </h3>
-                <p>
+                <p id="story">
                     <%= story %>
                 </p>
                 <h5>
@@ -104,10 +104,17 @@
     <script>
         let editBtn = document.getElementById('edit-btn');
         let telPost = document.getElementById('tel-post');
-        editBtn.addEventListener('click', () => {
-            document.createElement("INPUT");
-            let editTitle = telPost.append("INPUT");
-            editTitle.setAttribute("value", title)
+        editBtn.addEventListener('click', async () => {
+            const options = {
+                method: 'GET'
+            };
+
+            console.log(options.body);
+            let url = window.location.href + '/edit';
+            console.log(url);
+            const response = await fetch(url, options);
+            console.log(response);
+            window.location.href = url;
         })
     </script>
 </body>

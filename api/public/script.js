@@ -33,6 +33,7 @@ async function addPost(e) {
         console.log(data);
         let id = data["_id"];
         window.location.href = `post/${id}`;
+
     } catch (e) {
         console.log(e);
     }
