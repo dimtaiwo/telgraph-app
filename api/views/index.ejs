@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegraph</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        .page-title {
+            font-family: 'Lobster', cursive;
+            margin-left: 20%;
+            padding-top: 50px;
+        }
+
+        #post-form {
+            font-family: 'Roboto', cursive;
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin: 5% auto;
+        }
+
+        #post-form label {
+            padding: 10px 0px;
+        }
+
+        #post-form input {
+            padding: 10px;
+            font-family: 'Roboto', cursive;
+        }
+
+        #post-form textarea {
+            font-family: 'Roboto', cursive;
+            padding: 10px;
+        }
+
+        .publish-form-button {
+            margin-top: 20px;
+            width: 20%;
+            min-width: 100px;
+            background-color: black;
+            color: #fff;
+            border: 3px solid black;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .publish-form-button:hover {
+            background-color: #fff;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1 class="page-title">Telegraph</h1>
+        </nav>
+    </header>
+    <section class="user-create-post">
+        <form id="post-form" action="">
+            <label for="title">Title</label>
+            <input id="title" type="text" placeholder="Title">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Name">
+            <label for="story">Story</label>
+            <textarea id="story" type="text" rows="4" cols="50" placeholder="Enter a story"></textarea>
+            <input class="publish-form-button" type="submit" value="Publish">
+        </form>
+    </section>
+</body>
+
+</html>

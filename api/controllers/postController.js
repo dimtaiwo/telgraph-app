@@ -2,6 +2,10 @@ const Post = require("../models/post");
 const express = require("express");
 const router = express.Router();
 
+// register view engine
+
+
+// CREATE A NEW POST
 router.post("/", async (req, res) => {
   try {
     const post = await Post.create({
@@ -9,6 +13,7 @@ router.post("/", async (req, res) => {
       name: req.body.name,
       story: req.body.story,
     });
+    // id assigned to post at the .save() method
     post.save();
     res.send(post);
   } catch (error) {
@@ -16,6 +21,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+//GET ALL POSTS REQUEST
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.find();
@@ -26,3 +32,13 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
+
+// FIND POST BY ID 
+router.get('/:id', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    res.render('post', { title: post.title, name: post.name, story: post.story });
+  } catch {
+    res.status(404).json({ err });
+  }
+})

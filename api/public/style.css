@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-h1{
+h1 {
     font-size: 48px;
 }
 
-.page-title{
+.page-title {
     font-family: 'Lobster', cursive;
     margin-left: 20%;
     padding-top: 50px;
 }
 
-#post-form{
+#post-form {
     font-family: 'Roboto', cursive;
     display: flex;
     flex-direction: column;
@@ -25,16 +25,36 @@ h1{
     margin: 5% auto;
 }
 
-#post-form label{
+#post-form label {
     padding: 10px 0px;
 }
 
-#post-form input{
+#post-form input {
     padding: 10px;
     font-family: 'Roboto', cursive;
 }
 
-#post-form textarea{
+#post-form textarea {
     font-family: 'Roboto', cursive;
     padding: 10px;
+}
+
+.publish-form-button {
+    margin-top: 20px;
+    width: 20%;
+    min-width: 100px;
+    background-color: black;
+    color: #fff;
+    border: 3px solid black;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.publish-form-button:hover {
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
 }

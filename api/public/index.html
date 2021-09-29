@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="/script.js"></script>
     <title>Telegraph</title>
 </head>
 
@@ -18,11 +19,12 @@
     <section class="user-create-post">
         <form id="post-form" action="">
             <label for="title">Title</label>
-            <input id="title" type="text" placeholder="Title">
+            <input id="title" type="text" name="title" placeholder="Title">
             <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Name">
+            <input id="name" type="text" name="name" placeholder="Name">
             <label for="story">Story</label>
-            <textarea id="story" type="text" rows="4" cols="50" placeholder="Enter a story"></textarea>
+            <textarea id="story" type="text" rows="4" cols="50" name="story" placeholder="Enter a story"></textarea>
+            <input id="publish-btn" class="publish-form-button" type="submit" value="Publish">
         </form>
     </section>
 </body>
