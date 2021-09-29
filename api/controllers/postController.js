@@ -80,7 +80,7 @@ router.put('/:id/edit', async (req, res) => {
       new: true
     });
 
-    res.render('post', { title: post.title, name: post.name, story: post.story });
+    res.render('post', { title: post.title, name: post.name, story: post.story, date: post.Date });
   } catch (error) {
     console.log(error);
   }
