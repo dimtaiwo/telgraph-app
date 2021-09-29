@@ -1,31 +1,27 @@
 const express = require("express");
 const cors = require("cors");
 const server = express();
-const mongoose = require("mongoose");
+const dbConnect = require("./db/init");
+
 const postRouter = require("./controllers/postController");
-require("dotenv").config();
 
 // register view engine
-server.set('view engine', 'ejs');
+server.set("view engine", "ejs");
 
-mongoose
-  .connect(process.env.CONNECTION_STRING)
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.error("cannot connect to db", err);
-  });
-
+dbConnect();
 server.use(cors());
 server.use(express.json());
 
 server.use("/post", postRouter);
 
-server.use(express.static('public'));
+server.use(express.static("public"));
 
 server.get("/", (req, res) => {
-  res.send('Hello Velin')
+  res.send("Hello Velin");
+});
+
+server.use("/post", (req, res) => {
+  res.status(300).render("404");
 });
 
 // No page reload on post

@@ -1,22 +1,32 @@
 const Post = require("../models/post");
 const express = require("express");
 const router = express.Router();
+
 var dayjs = require('dayjs');
 const server = require("../server");
 
-// register view engine
+const Joi = require("joi");
 
+
+// register view engine
 
 // CREATE A NEW POST
 router.post("/", async (req, res) => {
+  const schema = Joi.object({
+    title: Joi.string().min(2).required(),
+    name: Joi.string(),
+    story: Joi.string().min(2).required(),
+  });
+  const { error, value } = schema.validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
   try {
     const post = await Post.create({
-      title: req.body.title,
-      name: req.body.name,
-      story: req.body.story,
+      title,
+      name,
+      story,
     });
     // id assigned to post at the .save() method
-    post.save();
+    await post.save();
     res.send(post);
   } catch (error) {
     res.status(400).send(error);
@@ -27,6 +37,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.find();
+    if (posts.length === 0) return res.status(404).send("No post found");
     res.status(201).json(posts);
   } catch (error) {
     res.send("cant find posts", error);
@@ -88,3 +99,4 @@ router.put('/:id/edit', async (req, res) => {
 })
 
 module.exports = router;
+
