@@ -28,7 +28,7 @@
     .telegraph-post {
         display: flex;
         justify-content: space-between;
-        min-width: 300px;
+        min-width: 500px;
         max-width: 800px;
         font-family: 'Roboto';
         margin-top: 10%;
@@ -39,6 +39,7 @@
 
     .telegraph-post h1 {
         font-family: 'Lobster', cursive;
+        white-space: nowrap;
         padding: 3%;
     }
 
@@ -47,6 +48,10 @@
     }
 
     .telegraph-post p {
+        padding: 3%;
+    }
+
+    .telegraph-post h5 {
         padding: 3%;
     }
 
@@ -84,6 +89,9 @@
                 <p>
                     <%= story %>
                 </p>
+                <h5>
+                    <%= date %>
+                </h5>
             </div>
             <button id="edit-btn">Edit</button>
         </div>
