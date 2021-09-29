@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document | <%= title %>
+    </title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .created-post {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .telegraph-post {
+        display: flex;
+        justify-content: space-between;
+        min-width: 300px;
+        max-width: 800px;
+        font-family: 'Roboto';
+        margin-top: 10%;
+        padding: 3%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: #fff;
+    }
+
+    .telegraph-post h1 {
+        font-family: 'Lobster', cursive;
+        padding: 3%;
+    }
+
+    .telegraph-post h3 {
+        padding: 3%;
+    }
+
+    .telegraph-post p {
+        padding: 3%;
+    }
+
+    #edit-btn {
+        width: 15%;
+        min-width: 65px;
+        height: 35px;
+        background-color: #fff;
+        color: black;
+        border: 2px solid black;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 10px 0px;
+    }
+
+    #edit-btn:hover {
+        cursor: pointer;
+        background-color: black;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <section class="created-post">
+        <div class="telegraph-post">
+            <div>
+                <h1>
+                    <%= title %>
+                </h1>
+                <h3>
+                    <%= name %>
+                </h3>
+                <p>
+                    <%= story %>
+                </p>
+            </div>
+            <button id="edit-btn">Edit</button>
+        </div>
+    </section>
+</body>
+
+</html>

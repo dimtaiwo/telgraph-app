@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const postRouter = require("./controllers/postController");
 require("dotenv").config();
 
+// register view engine
+server.set('view engine', 'ejs');
+
 mongoose
   .connect(process.env.CONNECTION_STRING)
   .then(() => {
@@ -19,8 +22,10 @@ server.use(express.json());
 
 server.use("/post", postRouter);
 
+server.use(express.static('public'));
+
 server.get("/", (req, res) => {
-  res.send("Hello Vellin");
+  res.send('Hello Velin')
 });
 
 module.exports = server;
