@@ -20,12 +20,21 @@ async function addPost(e) {
     story: e.target.story.value,
   };
 
+  console.log(options.body);
+  const response = await fetch('http://localhost:3000/post', options);
+  console.log(response);
+  const data = await response.json();
+  console.log(data);
+  let id = data["_id"];
+  window.location.href = `post/${id}`;
+
   try {
     const options = {
       method: "POST",
       body: JSON.stringify(postData),
       headers: { "Content-Type": "application/json" },
     };
+
 
     console.log(options.body);
     const response = await fetch("http://localhost:3000/post", options);

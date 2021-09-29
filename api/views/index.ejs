@@ -71,27 +71,57 @@
 
   <body>
     <header>
-      <nav>
-        <h1 class="page-title">Telegraph</h1>
-      </nav>
+        <nav>
+            <h1 class="page-title">Edit Your Post</h1>
+        </nav>
     </header>
     <section class="user-create-post">
-      <form id="post-form" action="">
-        <p class="hidden" id="error"></p>
-        <label for="title">Title</label>
-        <input id="title" type="text" placeholder="Title" />
-        <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Name" />
-        <label for="story">Story</label>
-        <textarea
-          id="story"
-          type="text"
-          rows="4"
-          cols="50"
-          placeholder="Enter a story"
-        ></textarea>
-        <input class="publish-form-button" type="submit" value="Publish" />
-      </form>
+        <form id="post-form" action="">
+            <label for="title">Title</label>
+            <input id="title" type="text" placeholder="Title" name="title" value="<%= title %>" autofocus>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Name" name="name" value="<%= name %>">
+            <label for="story">Story</label>
+            <textarea id="story" type="text" rows="4" cols="50" name="story"
+                placeholder="Enter a story"><%= story %></textarea>
+            <input id="submit-btn" class="publish-form-button" type="submit" value="Publish">
+        </form>
     </section>
-  </body>
+    <script>
+        let submitBtn = document.getElementById('submit-btn');
+        let telPost = document.getElementById('tel-post');
+        submitBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            let editName = document.getElementById('name').value;
+            let editTitle = document.getElementById('title').value;
+            let editStory = document.getElementById('story').value;
+
+            const postData = {
+                title: editTitle,
+                name: editName,
+                story: editStory
+            }
+
+            try {
+                const options = {
+                    method: 'PUT',
+                    body: JSON.stringify(postData),
+                    headers: { "Content-Type": "application/json" }
+                };
+
+                console.log(options.body);
+
+                let fetchUrl = window.location.href;
+                const response = await fetch(fetchUrl, options);
+                console.log(response);
+                let newUrl = window.location.href.replace('/edit', '');
+                window.location.href = newUrl;
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    </script>
+</body>
+
 </html>
+
