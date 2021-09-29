@@ -32,8 +32,7 @@ async function addPost(e) {
         const data = await response.json();
         console.log(data);
         let id = data["_id"];
-        window.location.href = `post/${id}`
-
+        window.location.href = `post/${id}`;
     } catch (e) {
         console.log(e);
     }

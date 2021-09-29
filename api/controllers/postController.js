@@ -2,6 +2,7 @@ const Post = require("../models/post");
 const express = require("express");
 const router = express.Router();
 var dayjs = require('dayjs');
+const server = require("../server");
 
 // register view engine
 
@@ -32,8 +33,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // FIND POST BY ID 
 router.get('/:id', async (req, res) => {
   try {
@@ -50,3 +49,5 @@ router.get('/:id', async (req, res) => {
     res.status(404).json({ err });
   }
 })
+
+module.exports = router;

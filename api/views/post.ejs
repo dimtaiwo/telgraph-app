@@ -20,7 +20,7 @@
     }
 
     .created-post {
-        width: 100%;
+        width: auto;
         display: flex;
         justify-content: center;
     }
@@ -39,20 +39,25 @@
 
     .telegraph-post h1 {
         font-family: 'Lobster', cursive;
-        white-space: nowrap;
-        padding: 3%;
+        padding: 30px;
     }
 
     .telegraph-post h3 {
-        padding: 3%;
+        padding: 30px;
     }
 
     .telegraph-post p {
-        padding: 3%;
+        padding: 30px;
+        width: auto;
+        word-wrap: break-word;
     }
 
     .telegraph-post h5 {
-        padding: 3%;
+        padding: 30px;
+    }
+
+    .post-wrapper {
+        width: 93%;
     }
 
     #edit-btn {
@@ -78,8 +83,8 @@
 
 <body>
     <section class="created-post">
-        <div class="telegraph-post">
-            <div>
+        <div id="tel-post" class="telegraph-post">
+            <div class="post-wrapper">
                 <h1>
                     <%= title %>
                 </h1>
@@ -96,6 +101,15 @@
             <button id="edit-btn">Edit</button>
         </div>
     </section>
+    <script>
+        let editBtn = document.getElementById('edit-btn');
+        let telPost = document.getElementById('tel-post');
+        editBtn.addEventListener('click', () => {
+            document.createElement("INPUT");
+            let editTitle = telPost.append("INPUT");
+            editTitle.setAttribute("value", title)
+        })
+    </script>
 </body>
 
 </html>
